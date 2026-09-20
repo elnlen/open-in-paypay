@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>URLをpaypayで開く</title>
+	<style>
+body {background-color:tan;}
+.home {text-align:center;}
+.subheadding {border-bottom:2px solid black;}
+.title {border-bottom:5px solid black;}
+button {
+	text-align:center;
+	background-color:tomato;
+	color:white;
+}
+	</style>
+</head>
+	<body>
+		<h2 class="home"><a href="https://elnlen.github.io">elnlen.github.io</a></h2>
+		<h1 class="title">URLをpaypayで開く</h1>
+		<input id="url" type="text" placeholder="enter an entire url here"/>
+		<button id="enter" onclick="openInPaypay()">Enter</button>
+		<h2 class="subheadding">更新履歴</h2>
+		<dl>
+		<dt>9/20</dt>
+		<dd>とりあえずスクリプトのみ作成&公開</dd>
+		</dl>
+		<p style="text-align:right;">last modified time:<span id="lm"></span></p>
+
+<script>
+const lm = document.getElementById("lm");
+lm.textContent = document.lastModified;
+function openInPaypay()
+{
+	const url = document.getElementById("url");
+	if(url.value == '') {
+		window.alert("Enter URL!");
+		return 1;
+	} else {
+		const encodedUrl = encodeURIComponent(url);
+		const PaypayUrl = `paypay://web?url=${encodedUrl}`;
+		window.location.href = PaypayUrl
+	}
+}
+</script>
+		</body>
+</html>
