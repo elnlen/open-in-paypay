@@ -36,9 +36,9 @@ function openInPaypay()
 	const url = document.getElementById("url");
 	if(url.value == '') {
 		window.alert("Enter URL!");
-		return 1;
+		return;
 	} else {
-		const encodedUrl = encodeURIComponent(url);
+		const encodedUrl = encodeURIComponent(url.value.trim());
 		const PaypayUrl = `paypay://web?url=${encodedUrl}`;
 		window.location.href = PaypayUrl
 	}
